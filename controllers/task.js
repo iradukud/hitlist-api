@@ -39,7 +39,7 @@ const editTask = async (req, res) => {
 const deleteTask = async (req, res) => {
     try {
         let mission = await Mission.findOneAndUpdate({ _id: req.params.id }, {
-            $pull: { tasks: { task: req.params.task } }
+            $pull: { tasks: { task: req.params.task.trim() } }
         }, {
             multi: true
         })
